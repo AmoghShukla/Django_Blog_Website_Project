@@ -1,0 +1,103 @@
+{% load static %}  <!-- Load static for other assets if needed -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+
+    <!-- ✅ Integrated CSS inside <style> tag -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: rgb(0, 247, 255);
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #222;
+            color: white;
+            padding: 15px 50px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff9800;
+        }
+
+        /* Blog Content */
+        main {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 32px;
+            color: rgb(144, 0, 255);
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo"><a href="{% url 'home' %}" style="color:white; text-decoration:none;">BloggerPost</a></div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <main>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BloggerPost. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

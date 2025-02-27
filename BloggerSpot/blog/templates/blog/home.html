@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloggerPost - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: rgb(0, 247, 255);
+            color: #333;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+        
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #222;
+            color: white;
+            padding: 15px 50px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff9800;
+        }
+        
+        /* Hero Section */
+        header {
+            background-color: rgb(144, 0, 255);
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cta-button {
+            background: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #e68900;
+        }
+        
+        /* Blog Cards */
+        .blog-container {
+            display: flex;
+            background-color: rgb(144, 0, 255);
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .blog-card {
+            background: white;
+            width: 407px;
+            margin: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ff9800;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .read-more:hover {
+            color: #e68900;
+        }
+        
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo" id="scroll-top">BloggerPost</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="hero-content">
+            <h1>Welcome to BloggerPost</h1>
+            <p>Your daily dose of amazing blogs</p>
+            <button class="cta-button" id="scroll-to-blogs">Explore Blogs</button>
+        </div>
+    </header>
+    
+    <!-- Blog Posts Section -->
+    <section id="blog-container" class="blog-container">
+        {% for post in posts %}
+        <div class="blog-card">
+            <div class="card-content">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content|truncatechars:150 }}</p>
+                <a href="{% url 'expanded_blog' post.id %}" class="read-more">Read More</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BloggerPost. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("scroll-to-blogs").addEventListener("click", function() {
+            document.getElementById("blog-container").scrollIntoView({ behavior: "smooth" });
+        });
+
+        document.getElementById("scroll-top").addEventListener("click", function() {
+            document.getElementById("hero").scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>

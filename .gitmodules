@@ -1,0 +1,3 @@
+[submodule "BloggerSpot"]
+	path = BloggerSpot
+	url = https://github.com/AmoghShukla/Django_Blog_Website_Project.git
