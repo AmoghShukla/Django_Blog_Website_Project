@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>About Us - BloggerPost</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+        }
+        
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 50px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff9800;
+        }
+        
+        /* About Content */
+        .about-content {
+            padding: 141px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 36px;
+            color: #ffcc00;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffffff;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="{% url 'home' %}" style="color:white; text-decoration:none;">BloggerPost</a></div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="about-content">
+        <h1>About BloggerPost</h1>
+        <p>Welcome to BloggerPost! This platform is built to share insightful blogs on various topics, encouraging meaningful discussions and learning.</p>
+        
+        <h2>Meet the Creator</h2>
+        <p>Follow me on:</p>
+        <div class="social-links">
+            <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a> |
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 BloggerPost. All rights reserved.</p>
+    </footer>
+</body>
+</html>

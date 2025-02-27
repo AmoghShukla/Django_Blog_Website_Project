@@ -1,3 +1,5 @@
+{% load static %}  <!-- Load static for assets -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +15,9 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: rgb(0, 247, 255);
-            color: #333;
-            scroll-behavior: smooth; /* Enables smooth scrolling */
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+            color: #fff;
+            scroll-behavior: smooth;
         }
         
         /* Navbar */
@@ -23,9 +25,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #222;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 15px 50px;
+            padding: 15px 21px;
+            position: fixed;
+            width: 98%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         .logo {
             font-size: 24px;
@@ -42,6 +49,7 @@
         .nav-links a {
             color: white;
             text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s;
         }
         .nav-links a:hover {
@@ -50,28 +58,40 @@
         
         /* Hero Section */
         header {
-            background-color: rgb(144, 0, 255);
-            height: 90vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
+            background: url('{% static "images/hero-bg.jpg" %}') no-repeat center center/cover;
             position: relative;
         }
-        .hero-content {
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
             border-radius: 10px;
         }
         .cta-button {
             background: #ff9800;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: background 0.3s;
+            font-size: 18px;
+            transition: all 0.3s;
         }
         .cta-button:hover {
             background: #e68900;
@@ -80,16 +100,18 @@
         /* Blog Cards */
         .blog-container {
             display: flex;
-            background-color: rgb(144, 0, 255);
             flex-wrap: wrap;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 80px 20px;
+            background: white;
+            color: #333;
+            border-radius: 20px 20px 0 0;
         }
         .blog-card {
             background: white;
-            width: 407px;
+            width: 350px;
             margin: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s;
@@ -98,7 +120,7 @@
             transform: translateY(-5px);
         }
         .card-content {
-            padding: 15px;
+            padding: 20px;
         }
         .read-more {
             display: inline-block;
@@ -114,10 +136,10 @@
         
         /* Footer */
         footer {
-            background: #222;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             margin-top: 20px;
         }
     </style>
@@ -127,19 +149,20 @@
     <nav>
         <div class="logo" id="scroll-top">BloggerPost</div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a id="scroll-to-blogs" style="cursor: pointer;">Blog</a></li>
         </ul>
     </nav>
     
     <!-- Hero Section -->
     <header id="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Welcome to BloggerPost</h1>
             <p>Your daily dose of amazing blogs</p>
-            <button class="cta-button" id="scroll-to-blogs">Explore Blogs</button>
+            <button class="cta-button" id="Explore-to-Blogs">Explore Blogs</button>
         </div>
     </header>
     
@@ -165,7 +188,9 @@
         document.getElementById("scroll-to-blogs").addEventListener("click", function() {
             document.getElementById("blog-container").scrollIntoView({ behavior: "smooth" });
         });
-
+        document.getElementById("Explore-to-Blogs").addEventListener("click", function() {
+            document.getElementById("blog-container").scrollIntoView({ behavior: "smooth" });
+        });
         document.getElementById("scroll-top").addEventListener("click", function() {
             document.getElementById("hero").scrollIntoView({ behavior: "smooth" });
         });
