@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+            width: 420px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .warning {
+            color: #d32f2f;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: #bdc3c7;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #a5b1c2;
+            transform: scale(1.02);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>⚠️ Confirm Deletion</h2>
+        <p class="warning">Are you sure you want to delete "<strong>{{ product.name }}</strong>"?<br>This action cannot be undone!</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">🗑 Delete</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
